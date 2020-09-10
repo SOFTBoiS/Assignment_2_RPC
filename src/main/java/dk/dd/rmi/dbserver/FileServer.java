@@ -7,6 +7,7 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class FileServer extends UnicastRemoteObject implements FileTransferServer {
     private String file = "";
+    CustomerFacade cf = new CustomerFacade();
 
     protected FileServer() throws RemoteException {
     }
@@ -19,20 +20,8 @@ public class FileServer extends UnicastRemoteObject implements FileTransferServe
     @Override
     public boolean receiveData(String filename, byte[] data, int length) {
         try {
-            File f = new File(filename);
-            f.createNewFile();
-            FileOutputStream out = new FileOutputStream(f, true);
-            out.write(data, 0, length);
-            out.flush();
-            out.close();
-            // TODO: Parse JSON to object
-
-            // TODO: persist custom object in database
-
-            // TODO: Delete file
-
-
-            System.out.println("Done writing data..");
+            cf.insertUser(data);
+            System.out.println("User persisted");
         } catch (Exception e) {
             e.printStackTrace();
         }

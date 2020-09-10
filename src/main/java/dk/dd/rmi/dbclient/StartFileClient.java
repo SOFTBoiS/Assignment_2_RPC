@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class StartFileClient {
     public static void main(String[] args) throws IOException, NotBoundException {
-        var pathToFile = "C:\\Users\\Adam\\testxD.json";
+        var pathToFile = args[0];
         Random rand = new Random();
         var fileName = rand.nextInt(1000000) + ".json";
         var server = (FileTransferServer) Naming.lookup("//localhost/FileService");

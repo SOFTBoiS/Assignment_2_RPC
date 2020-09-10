@@ -10,15 +10,6 @@ import dk.dd.rmi.dbserver.*;
 
 public class RMIClientDB {
     public static void main(String args[]) throws Exception {
-//        try{
-//            String path = args[0];
-//
-//        }catch(Exception e){
-//            System.out.println("Remember to add args");
-//            System.out.println(e.getMessage());
-//        }
-
-
         // name =  rmi:// + ServerIP +  /EngineName;
         String remoteEngine = "rmi://localhost/BankServices";
 

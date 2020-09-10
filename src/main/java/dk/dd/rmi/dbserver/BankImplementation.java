@@ -75,6 +75,25 @@ public class BankImplementation extends UnicastRemoteObject implements BankInter
         return count;
     }
 
+    @Override
+    public int insertUser(Customer customer) throws RemoteException {
+        int i = 0;
+        try{
+            Class.forName(driver);
+            Connection con=DriverManager.getConnection(url, user, password);
+            PreparedStatement stmt=con.prepareStatement("insert into Customer values(?,?,?)");
+            stmt.setLong(1,customer.getAccnum());
+            stmt.setString(2,customer.getName());
+            stmt.setDouble(3,customer.getAmount());
+
+            i = stmt.executeUpdate();
+            System.out.println(i+" records inserted");
+            con.close();
+
+        }catch(Exception e){ System.out.println(e);}
+
+        return i;
+    }
 
 }  
 
