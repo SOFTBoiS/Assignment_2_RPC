@@ -12,8 +12,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Entity
-public class Customer implements Serializable
-{
+public class Customer implements Serializable {
 
     @Id
     private Long accnum;
@@ -30,7 +29,7 @@ public class Customer implements Serializable
         return name;
     }
 
-    public Double getAmount(){
+    public Double getAmount() {
         return amount;
     }
 

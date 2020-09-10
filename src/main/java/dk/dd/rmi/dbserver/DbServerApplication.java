@@ -13,10 +13,8 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 @SpringBootApplication
-public class DbServerApplication
-{
-    public static void main(String[] args)
-    {
+public class DbServerApplication {
+    public static void main(String[] args) {
         SpringApplication.run(DbServerApplication.class, args);
     }
 
