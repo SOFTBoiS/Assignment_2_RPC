@@ -47,14 +47,14 @@ public class BankImplementation extends UnicastRemoteObject implements BankInter
             PreparedStatement ps=con.prepareStatement("select * from Customer where amount >= 100000;");
             ResultSet rs=ps.executeQuery();
             while(rs.next())
-            {  
-                Customer c=new Customer();  
+            {
+                Customer c=new Customer();
                 c.setAccnum(rs.getLong(1));
-                c.setName(rs.getString(2));  
+                c.setName(rs.getString(2));
                 c.setAmount(rs.getDouble(3));
                 System.out.println(c);
-                list.add(c);  
-            }  
+                list.add(c);
+            }
             con.close();  
         }
         catch(Exception e)
@@ -62,7 +62,29 @@ public class BankImplementation extends UnicastRemoteObject implements BankInter
             System.out.println(e);
         }  
         return list;  
-    }  
+    }
+
+    @Override
+    public int getUserCount() throws RemoteException {
+        int count = 0;
+        try
+        {
+            Class.forName(driver);
+            Connection con=DriverManager.getConnection(url, user, password);
+            PreparedStatement ps=con.prepareStatement("select COUNT(*) from Customer;");
+            ResultSet rs=ps.executeQuery();
+            rs.next();
+            count = rs.getInt(1);
+            con.close();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return count;
+    }
+
+
 }  
 
 

@@ -10,6 +10,7 @@ import java.util.List;
 public interface BankInterface extends Remote
 {
     List<Customer> getMillionaires() throws RemoteException;
+    int getUserCount() throws RemoteException;
     // @Query(value = "SELECT name FROM Customer  WHERE amount > 1000000")
     // List<Customer> findAllMillions();
     // List<Customer> findAllByName(String name);
